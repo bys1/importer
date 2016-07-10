@@ -1,0 +1,5 @@
+main: eu.taigacraft.importer.ImporterPlugin
+name: Importer
+description: An importer plugin to allow other plugins to easily import player data from other plugins.
+version: ${project.version}
+author: bys1
