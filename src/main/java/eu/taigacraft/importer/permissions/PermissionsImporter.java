@@ -1,23 +1,26 @@
 package eu.taigacraft.importer.permissions;
 
-import java.io.File;
-
 import org.bukkit.OfflinePlayer;
 
 import eu.taigacraft.importer.ImporterPlugin;
 
 public interface PermissionsImporter {
 	
-	public static PermissionsImporter register() {
-		
-		if (new File("plugins/PermissionsEx/permissions.yml").exists()) {
-			ImporterPlugin.getPlugin().logger.info("Hooking into PermissionsEx");
-			return new PermissionsExImporter();
+	public static void register(String pluginName, PermissionsImporter importer) {
+		if (!(ImporterPlugin.permissionsImporters.containsKey(pluginName))) {
+			ImporterPlugin.permissionsImporters.put(pluginName,importer);
+			ImporterPlugin.getPlugin().logger.info("Registered PermissionsImporter from " + pluginName);
 		}
+	}
+	
+	public static PermissionsImporter get() {
 		
-		if (new File("plugins/PowerPerms/config.yml").exists()) {
-			ImporterPlugin.getPlugin().logger.info("Hooking into PowerPerms");
-			return new PowerPermsImporter();
+		for (String pluginName : ImporterPlugin.permissionsImporters.keySet()
+				.toArray(new String[ImporterPlugin.permissionsImporters.keySet().size()])) {
+			if (ImporterPlugin.getPlugin().getServer().getPluginManager().getPlugin(pluginName) != null) {
+				ImporterPlugin.getPlugin().logger.info("Hooking into " + pluginName);
+				return ImporterPlugin.permissionsImporters.get(pluginName);
+			}
 		}
 		
 		return null;
