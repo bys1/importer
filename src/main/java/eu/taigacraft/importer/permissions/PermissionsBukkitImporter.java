@@ -25,12 +25,22 @@ public class PermissionsBukkitImporter implements PermissionsImporter {
 	}
 	
 	@Deprecated
+	public String getPrefix(OfflinePlayer player, String worldname, String ladder) {
+		return null;
+	}
+	
+	@Deprecated
 	public String getSuffix(OfflinePlayer player) {
 		return null;
 	}
 	
 	@Deprecated
 	public String getSuffix(OfflinePlayer player, String worldname) {
+		return null;
+	}
+	
+	@Deprecated
+	public String getSuffix(OfflinePlayer player, String worldname, String ladder) {
 		return null;
 	}
 	
