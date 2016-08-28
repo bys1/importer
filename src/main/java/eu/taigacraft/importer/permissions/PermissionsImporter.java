@@ -32,9 +32,13 @@ public interface PermissionsImporter {
 	
 	public String getPrefix(OfflinePlayer player, String worldname);
 	
+	public String getPrefix(OfflinePlayer player, String worldname, String ladder);
+	
 	public String getSuffix(OfflinePlayer player);
 	
 	public String getSuffix(OfflinePlayer player, String worldname);
+	
+	public String getSuffix(OfflinePlayer player, String worldname, String ladder);
 	
 	public boolean hasPermission(OfflinePlayer player, String permission);
 	
