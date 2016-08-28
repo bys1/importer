@@ -20,7 +20,12 @@ public class PermissionsExImporter implements PermissionsImporter {
 
 	@Deprecated
 	public String getPrefix(OfflinePlayer player, String worldname) {
-		return null;
+		return getPrefix(player);
+	}
+	
+	@Deprecated
+	public String getPrefix(OfflinePlayer player, String worldname, String ladder) {
+		return getPrefix(player,worldname);
 	}
 	
 	public String getSuffix(OfflinePlayer player) {
@@ -29,7 +34,12 @@ public class PermissionsExImporter implements PermissionsImporter {
 
 	@Deprecated
 	public String getSuffix(OfflinePlayer player, String worldname) {
-		return null;
+		return getSuffix(player);
+	}
+	
+	@Deprecated
+	public String getSuffix(OfflinePlayer player, String worldname, String ladder) {
+		return getSuffix(player,worldname);
 	}
 	
 	public boolean hasPermission(OfflinePlayer player, String permission) {
