@@ -28,6 +28,8 @@ public interface PermissionsImporter {
 	
 	public String getRank(OfflinePlayer player);
 	
+	public List<String> getRanks(OfflinePlayer player);
+	
 	public String getPrefix(OfflinePlayer player);
 	
 	public String getPrefix(OfflinePlayer player, String worldname);
@@ -40,8 +42,8 @@ public interface PermissionsImporter {
 	
 	public String getSuffix(OfflinePlayer player, String worldname, String ladder);
 	
-	public boolean hasPermission(OfflinePlayer player, String permission);
+	public Boolean hasPermission(OfflinePlayer player, String permission);
 	
-	public boolean hasPermission(OfflinePlayer player, String permission, String worldname);
+	public Boolean hasPermission(OfflinePlayer player, String permission, String worldname);
 	
 }
