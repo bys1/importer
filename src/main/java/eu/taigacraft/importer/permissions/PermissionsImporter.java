@@ -1,5 +1,7 @@
 package eu.taigacraft.importer.permissions;
 
+import java.util.List;
+
 import org.bukkit.OfflinePlayer;
 
 import eu.taigacraft.importer.ImporterPlugin;
@@ -45,5 +47,9 @@ public interface PermissionsImporter {
 	public Boolean hasPermission(OfflinePlayer player, String permission);
 	
 	public Boolean hasPermission(OfflinePlayer player, String permission, String worldname);
+	
+	public void load(OfflinePlayer player);
+	
+	public void unload(OfflinePlayer player);
 	
 }
