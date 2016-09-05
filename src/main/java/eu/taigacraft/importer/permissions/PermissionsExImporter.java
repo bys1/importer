@@ -42,11 +42,11 @@ public class PermissionsExImporter implements PermissionsImporter {
 		return getSuffix(player,worldname);
 	}
 	
-	public boolean hasPermission(OfflinePlayer player, String permission) {
+	public Boolean hasPermission(OfflinePlayer player, String permission) {
 		return pex.getStringList("groups." + this.getRank(player) + ".permissions").contains(permission);
 	}
 	
-	public boolean hasPermission(OfflinePlayer player, String permission, String worldname) {
+	public Boolean hasPermission(OfflinePlayer player, String permission, String worldname) {
 		return pex.getStringList("groups." + this.getRank(player) + ".worlds." + worldname + ".permissions").contains(permission);
 	}
 
