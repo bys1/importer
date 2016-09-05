@@ -1,6 +1,7 @@
 package eu.taigacraft.importer.permissions;
 
 import java.io.File;
+import java.util.List;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -11,7 +12,11 @@ public class PermissionsExImporter implements PermissionsImporter {
 	private FileConfiguration pex = YamlConfiguration.loadConfiguration(new File("plugins/PermissionsEx/permissions.yml"));
 	
 	public String getRank(OfflinePlayer player) {
-		return pex.getStringList("users." + player.getUniqueId().toString() + ".group").get(0);
+		return getRanks(player).get(0);
+	}
+	
+	public List<String> getRanks(OfflinePlayer player) {
+		return pex.getStringList("users." + player.getUniqueId().toString() + ".group");
 	}
 	
 	public String getPrefix(OfflinePlayer player) {
@@ -49,5 +54,11 @@ public class PermissionsExImporter implements PermissionsImporter {
 	public Boolean hasPermission(OfflinePlayer player, String permission, String worldname) {
 		return pex.getStringList("groups." + this.getRank(player) + ".worlds." + worldname + ".permissions").contains(permission);
 	}
+	
+	@Deprecated
+	public void load(OfflinePlayer player) {}
+	
+	@Deprecated
+	public void unload(OfflinePlayer player) {}
 
 }
