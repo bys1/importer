@@ -44,12 +44,12 @@ public class PermissionsBukkitImporter implements PermissionsImporter {
 		return null;
 	}
 	
-	public boolean hasPermission(OfflinePlayer player, String permission) {
+	public Boolean hasPermission(OfflinePlayer player, String permission) {
 		final String path = "groups." + getRank(player) + ".permissions." + permission;
 		return pb.get(path) != null ? pb.getBoolean(path) : false;
 	}
 	
-	public boolean hasPermission(OfflinePlayer player, String permission, String worldname) {
+	public Boolean hasPermission(OfflinePlayer player, String permission, String worldname) {
 		final String path = "groups." + getRank(player) + ".worlds." + worldname + ".permissions." + permission;
 		return pb.get(path) != null ? pb.getBoolean(path) : false;
 	}
