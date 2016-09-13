@@ -52,4 +52,6 @@ public interface PermissionsImporter {
 	
 	public void unload(OfflinePlayer player);
 	
+	public boolean isLoaded(OfflinePlayer player);
+	
 }
