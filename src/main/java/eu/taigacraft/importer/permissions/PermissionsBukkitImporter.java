@@ -64,5 +64,10 @@ public class PermissionsBukkitImporter implements PermissionsImporter {
 	
 	@Deprecated
 	public void unload(OfflinePlayer player) {}
+	
+	@Deprecated
+	public boolean isLoaded(OfflinePlayer player) {
+		return false;
+	}
 
 }
