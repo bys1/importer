@@ -4,7 +4,7 @@
 
   <groupId>eu.taigacraft</groupId>
   <artifactId>importer</artifactId>
-  <version>0.5-Beta</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
   <name>Importer</name>
   <url>http://maven.apache.org</url>
@@ -42,6 +42,14 @@
       <id>spigot-repo</id>
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+    <repository>
+      <id>central</id>
+      <url>http://repo1.maven.org/maven2</url>
+    </repository>
   </repositories>
   
   <dependencies>
@@ -67,6 +75,20 @@
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
+    </dependency>
+    <!-- PermissionsBukkit dependency -->
+    <dependency>
+      <groupId>com.github.bys1</groupId>
+      <artifactId>PermissionsBukkit</artifactId>
+      <version>9f6b633</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- LuckPerms dependency -->
+    <dependency>
+      <groupId>me.lucko.luckperms</groupId>
+      <artifactId>luckperms-api</artifactId>
+      <version>4.0</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 </project>
