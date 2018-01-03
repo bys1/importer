@@ -1,3 +1,5 @@
+# Importer
+
 Easily import data from permissions or economy plugins using the Importer API.
 
 <br />
@@ -53,7 +55,8 @@ if (plugin.getServer().getPluginManager().getPlugin("Importer") != null) {
   PermissionsImporter.register(plugin, importer);
 }
 ```
-Note that it might be useful to add a softdepend to Importer in your plugin.yml file.
+######Note that it might be useful to add a softdepend to Importer in your plugin.yml file.
+<br />
 <br />
 PermissionsImporter methods:
 
