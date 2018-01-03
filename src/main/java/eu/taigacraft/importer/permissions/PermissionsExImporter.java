@@ -7,63 +7,59 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import eu.taigacraft.importer.ImporterCallback;
+
 public class PermissionsExImporter implements PermissionsImporter {
 	
 	private FileConfiguration pex = YamlConfiguration.loadConfiguration(new File("plugins/PermissionsEx/permissions.yml"));
 	
-	public String getRank(OfflinePlayer player) {
-		return getRanks(player).get(0);
+	public void getRank(OfflinePlayer player, ImporterCallback<String> callback) {
+		callback.call(getRanks(player).get(0));
 	}
 	
-	public List<String> getRanks(OfflinePlayer player) {
+	public void getRanks(OfflinePlayer player, ImporterCallback<List<String>> callback) {
+		callback.call(getRanks(player));
+	}
+	
+	private final List<String> getRanks(OfflinePlayer player) {
 		return pex.getStringList("users." + player.getUniqueId().toString() + ".group");
 	}
 	
-	public String getPrefix(OfflinePlayer player) {
-		return pex.getString("groups." + this.getRank(player) + ".options.prefix");
+	public void getPrefix(OfflinePlayer player, ImporterCallback<String> callback) {
+		callback.call(pex.getString("groups." + this.getRanks(player).get(0) + ".options.prefix"));
 	}
 
 	@Deprecated
-	public String getPrefix(OfflinePlayer player, String worldname) {
-		return getPrefix(player);
+	public void getPrefix(OfflinePlayer player, String worldname, ImporterCallback<String> callback) {
+		getPrefix(player, callback);
 	}
 	
 	@Deprecated
-	public String getPrefix(OfflinePlayer player, String worldname, String ladder) {
-		return getPrefix(player,worldname);
+	public void getPrefix(OfflinePlayer player, String worldname, String ladder, ImporterCallback<String> callback) {
+		getPrefix(player, callback);
 	}
 	
-	public String getSuffix(OfflinePlayer player) {
-		return pex.getString("groups." + this.getRank(player) + ".options.suffix");
+	public void getSuffix(OfflinePlayer player, ImporterCallback<String> callback) {
+		callback.call(pex.getString("groups." + this.getRanks(player).get(0) + ".options.suffix"));
 	}
 
 	@Deprecated
-	public String getSuffix(OfflinePlayer player, String worldname) {
-		return getSuffix(player);
+	public void getSuffix(OfflinePlayer player, String worldname, ImporterCallback<String> callback) {
+		getSuffix(player, callback);
 	}
 	
 	@Deprecated
-	public String getSuffix(OfflinePlayer player, String worldname, String ladder) {
-		return getSuffix(player,worldname);
+	public void getSuffix(OfflinePlayer player, String worldname, String ladder, ImporterCallback<String> callback) {
+		getSuffix(player, callback);
 	}
 	
-	public Boolean hasPermission(OfflinePlayer player, String permission) {
-		return pex.getStringList("groups." + this.getRank(player) + ".permissions").contains(permission);
+	public void hasPermission(OfflinePlayer player, String permission, ImporterCallback<Boolean> callback) {
+		callback.call(pex.getStringList("groups." + this.getRanks(player).get(0) + ".permissions").contains(permission));
 	}
 	
-	public Boolean hasPermission(OfflinePlayer player, String permission, String worldname) {
-		return pex.getStringList("groups." + this.getRank(player) + ".worlds." + worldname + ".permissions").contains(permission);
+	public void hasPermission(OfflinePlayer player, String permission, String worldname, ImporterCallback<Boolean> callback) {
+		callback.call(pex.getStringList("groups." + this.getRanks(player).get(0) + ".worlds." + worldname + ".permissions")
+				.contains(permission));
 	}
 	
-	@Deprecated
-	public void load(OfflinePlayer player) {}
-	
-	@Deprecated
-	public void unload(OfflinePlayer player) {}
-	
-	@Deprecated
-	public boolean isLoaded(OfflinePlayer player) {
-		return false;
-	}
-
 }
