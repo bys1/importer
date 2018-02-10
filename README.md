@@ -90,3 +90,30 @@ public void hasPermission(OfflinePlayer player, String permission, ImporterCallb
 ```java
 public void hasPermission(OfflinePlayer player, String permission, String worldname, ImporterCallback<Boolean> callback);
 ```
+
+**EconomyImporter**
+The EconomyImporter (*eu.taigacraft.importer.economy*) can import data from economy plugins.
+<br />
+Get an EconomyImporter instance:
+```java
+final EconomyImporter importer = EconomyImporter.get();
+```
+<br />
+If you own an economy plugin, you can register your own EconomyImporter to Importer. Create a class that implements EconomyImporter and register it using the following method:
+
+```java
+// plugin is the class that extends JavaPlugin
+// importer is the class that implements EconomyImporter
+// Be aware of ClassNotFoundErrors when the Importer plugin isn't loaded!
+if (plugin.getServer().getPluginManager().getPlugin("Importer") != null) {
+  EconomyImporter.register(plugin, importer);
+}
+```
+*Note that it might be useful to add a softdepend to Importer in your plugin.yml file.*
+<br />
+<br />
+PermissionsImporter methods:
+
+```java
+public void getBalance(OfflinePlayer player, ImporterCallback<Double> callback);
+```
