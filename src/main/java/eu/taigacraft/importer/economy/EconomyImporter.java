@@ -1,10 +1,14 @@
 package eu.taigacraft.importer.economy;
 
+import java.util.function.Consumer;
+
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.Plugin;
 
 import eu.taigacraft.importer.ImporterCallback;
 import eu.taigacraft.importer.ImporterPlugin;
+
+import static eu.taigacraft.importer.ImporterCallback.fromConsumer;
 
 public interface EconomyImporter {
 
@@ -28,5 +32,9 @@ public interface EconomyImporter {
 	}
 	
 	public void getBalance(OfflinePlayer player, ImporterCallback<Double> callback);
+	
+	public default void getBalance(OfflinePlayer player, Consumer<Double> consumer) {
+		getBalance(player, fromConsumer(consumer, false));
+	}
 	
 }
