@@ -35,6 +35,9 @@ final ImporterCallback<String> callback = new ImporterCallback<String>() {
 }
 ```
 
+As of Importer v1.1, all methods using `ImporterCallback<T>` will now also accept a `Consumer<T>`. The methods accepting the `Consumer<T>` are implemented as `default` methods in the `PermissionsImporter` and `EconomyImporter` interfaces and will first invoke `ImporterCallback#fromConsumer` to get an `ImporterCallback` and then pass that to the original Importer method. The use of a `Consumer<T>` will allow you to use lambda expressions and method references.
+Note: all Consumers will be called on the Bukkit main thread. If you need the callback to be run asynchronously, you will need to use an ImporterCallback and pass `true` to the `async` parameter in the constructor.
+
 <br />
 
 **PermissionsImporter** <br />
