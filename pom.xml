@@ -4,7 +4,7 @@
 
   <groupId>eu.taigacraft</groupId>
   <artifactId>importer</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
   <name>Importer</name>
   <url>http://maven.apache.org</url>
